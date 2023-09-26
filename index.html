@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <form action="home.html">
+    <fieldset>
+        <h1>Log In</h1>
+        <div id="input_fiele">
+            <input id="email" type="email" placeholder="User Name" required><br>
+            <input id="pass" type="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required>
+        </div>
+        <input id="button" value="LOG IN" type="submit">
+        <a href="form.html" class="back_btn">SIGN IN</a>
+    </fieldset>
+
+</form>
+</body>
+
+</html>

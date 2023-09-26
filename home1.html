@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <style>
+        #myNavBar ul li a {
+            margin-right: 40px;
+        }
+
+        #myNavBar2 {
+            display: none;
+        }
+
+        @media (max-width: 991.5px) {
+            #myNavBar2 {
+                display: block;
+                background-color: rgb(84, 85, 85);
+                height: 100vh;
+                width: 300px;
+                text-align: center;
+                position: absolute;
+                margin-top:-40px;
+                margin-left: -300px;
+                transition: .5s;
+                /* margin-bottom: 10px; */
+            }
+
+            #myNavBar2 ul {
+                margin-top: 15vh;
+            }
+
+            #myNavBar2 ul li a {
+                text-align: center;
+               
+                background-color: blue;
+                padding-top: 5px;
+                height: 40px;
+                width: 200px;
+                margin: auto;
+                margin-top: 10vh;
+            }
+        }
+    </style>
+    <header>
+        <nav class=" navbar navbar-expand-lg navbar-dark bg-success mb-5">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <!-- <i class="fa-solid fa-user"> -->
+                    <span><i class="fa-solid fa-user" style="font-size: 30px; padding-right: 10px;"></i></span>
+                    <span id="name"></span>
+                </a>
+                <!-- <h4 class="navbar-brand"><i class="fa-solid fa-user"></i><span id="name"></span></h4> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="myNavBar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="myNavBar">
+                    <ul class="navbar-nav ml-auto" style="padding-left: 50vw;">
+                        <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+                        <li class=" nav-item"><a href="json.html" class="nav-link">Fetch</a></li>
+                        <li class="nav-item"><a href="index.html" class="nav-link">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="ml-0 bg-success" id="myNavBar2" style="z-index: 2;">
+        <ul class="list-group list-unstyled text-dark">
+            <li class="nav-item "><a href="" class="nav-link btn btn-primary" role="button" data-bs-toggle="button">Home</a></li>
+            <li class=" nav-item"><a href="json.html" class="nav-link btn btn-primary">Fetch</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link btn btn-primary">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered text-center table-hover" id="table_filter">
+            <thead class="bg-success" style="background-color: rgb(7, 240, 96);">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <!-- <th id="sortButton">Age</th> -->
+                    <th>Age <button id="sortButton" style="border: none; background: none;"> <i
+                                class="fa-solid arrow fa-chevron-down"></i></button></th>
+                    <th>Phone</th>
+                    <th>Date & Time</th>
+                    <th>Password</th>
+                    <th>
+                        <div class="dropdown">Gender
+                            <button class="dropdown-button" ><i class="fa-solid fa-chevron-down"
+                                    style="margin-left: 5PX;"></i></button>
+                            <div class="dropdown-content">
+                                <a href="javascript:void(0)" id="all-candidate">ALL</a>
+                                <a href="javascript:void(0)" id='male_candidate'>MALE</a>
+                                <a href="javascript:void(0)" id='female_candidate'>FEMALE</a>
+                            </div>
+                        </div>
+                    </th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SACHIN</td>
+                    <td>sachin@gmail.com</td>
+                    <td>22</td>
+                    <td>6236001735</td>
+                    <td>22-Jan-2022 11:35</td>
+                    <td>saschin@123</td>
+                    <td>M</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>MALAR</td>
+                    <td>malar@gmail.com</td>
+                    <td>23</td>
+                    <td>9566001735</td>
+                    <td>12-Mar-2022 10:30</td>
+                    <td>malar@123</td>
+                    <td>F</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>KUMAR</td>
+                    <td>kumar@gmail.com</td>
+                    <td>25</td>
+                    <td>9566461735</td>
+                    <td>02-May-2022 10:00</td>
+                    <td>santhsoh@123</td>
+                    <td>M</td>
+                    <td>MUMBAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>VASANTH</td>
+                    <td>vasanth@gmail.com</td>
+                    <td>12</td>
+                    <td>9566001735</td>
+                    <td>05-Oct-2022 12:00</td>
+                    <td>santhsoh@123</td>
+                    <td>M</td>
+                    <td>DELHI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>LAKSHMI</td>
+                    <td>lakshmi@gmail.com</td>
+                    <td>33</td>
+                    <td>9566001735</td>
+                    <td>25-Feb-2023 11:00</td>
+                    <td>devi@123</td>
+                    <td>F</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>VENKAT</td>
+                    <td>venkat@gmail.com</td>
+                    <td>48</td>
+                    <td>9626001735</td>
+                    <td>30-Apr-2023 13:00</td>
+                    <td>venkat@123</td>
+                    <td>M</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>PREETHI</td>
+                    <td>preethi@gmail.com</td>
+                    <td>21</td>
+                    <td>6896001735</td>
+                    <td>10-Jun-2023 15:00</td>
+                    <td>preethi@123</td>
+                    <td>F</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>BALA</td>
+                    <td>bala@gmail.com</td>
+                    <td>28</td>
+                    <td>8826001735</td>
+                    <td>16-Aug-2023 10:30</td>
+                    <td>bala@123</td>
+                    <td>M</td>
+                    <td>BANGALORE</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>SNEHA</td>
+                    <td>sneha@gmail.com</td>
+                    <td>31</td>
+                    <td>8796001735</td>
+                    <td>10-Sep-2023 11:30</td>
+                    <td>sneha@123</td>
+                    <td>F</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td>ISABELLA</td>
+                    <td>isabella@gmail.com</td>
+                    <td>25</td>
+                    <td>7796001735</td>
+                    <td>20-Sep-2023 11:00</td>
+                    <td>isabella@123</td>
+                    <td>F</td>
+                    <td>CHENNAI</td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+                <tr>
+                    <td><span id="name1"></span></td>
+                    <td><span id="email"></span></td>
+                    <td><span id="age"></span></td>
+                    <td><span id="phone"></span></td>
+                    <td><span id="dateTime"></span></td>
+                    <td><span id="password"></span></td>
+                    <td><span id="gender"></span></td>
+                    <td><span id="location"></span></td>
+                    <th><button onclick="deleteRow(this)" class="btn btn-danger">Delete</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- <nav aria-label="Page navigation example text-danger">
+            <ul class="pagination justify-content-center pagination-lg ">
+                <li class="page-item disabled "><a class="page-link text-danger" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link text-danger" href="#">1</a></li>
+                <li class="page-item"><a class="page-link text-danger" href="#">2</a></li>
+                <li class="page-item"><a class="page-link text-danger" href="#">3</a></li>
+                <li class="page-item"><a class="page-link text-danger" href="#">Next</a></li>
+            </ul>
+        </nav> -->
+    </div>
+
+    <div class="form-group d-flex justify-content-around mt-5">
+        <button class="btn btn-dark text-white"><a href="form.html" class="text-white" style="text-decoration: none;">
+                BACK</a></button>
+        <button class="btn btn-dark text-white"><a href="index.html" class="text-white" style="text-decoration: none;">
+                EXIT</a></button>
+    </div>
+
+    <!-- <button id="sortButton">Sort by Age</button> -->
+
+
+    <footer class="footer bg-success mt-3 ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center text-white">
+                    <p>&copy; 2023 Your Company. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <input type="search"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <!-- <script src="home1.js"></script> -->
+    <script>
+        document.getElementById("name").textContent = localStorage.getItem("userName").toUpperCase();
+        document.getElementById("name1").textContent = localStorage.getItem("userName").toUpperCase();
+        document.getElementById("email").textContent = localStorage.getItem("userEmail");
+        document.getElementById("age").textContent = localStorage.getItem("userAge");
+        document.getElementById("phone").textContent = localStorage.getItem("userPhone");
+        document.getElementById("dateTime").textContent = localStorage.getItem("dateTime");
+        document.getElementById("password").textContent = localStorage.getItem("userPassword");
+        document.getElementById("gender").textContent = localStorage.getItem("userGender");
+        document.getElementById("location").textContent = localStorage.getItem("userLocation")
+
+        //Filtering male
+        document.getElementById('male_candidate').addEventListener('click', function () {
+
+            table = document.getElementById('table_filter');
+
+            tr = table.querySelector('tbody').getElementsByTagName('tr');
+
+            for (var i = 0; i < tr.length; i++) {
+
+                if (tr[i].getElementsByTagName('td')[6].innerText.indexOf('M') > -1) {
+                    tr[i].classList.remove('hide_row')
+                } else {
+                    tr[i].classList.add('hide_row')
+                }
+            }
+        })
+
+        //Filtering male
+        document.getElementById('female_candidate').addEventListener('click', function () {
+
+            table = document.getElementById('table_filter');
+
+            tr = table.querySelector('tbody').getElementsByTagName('tr');
+
+            for (var i = 0; i < tr.length; i++) {
+
+                if (tr[i].getElementsByTagName('td')[6].innerText.indexOf('F') > -1) {
+                    tr[i].classList.remove('hide_row')
+                } else {
+                    tr[i].classList.add('hide_row')
+                }
+            }
+        })
+
+        document.getElementById('all-candidate').addEventListener('click', function () {
+
+            table = document.getElementById('table_filter');
+
+            tr = table.querySelector('tbody').getElementsByTagName('tr');
+
+            for (var i = 0; i < tr.length; i++) {
+
+                if (tr[i].getElementsByTagName('td')[6].innerText.indexOf('F') > -1 || tr[i].getElementsByTagName('td')[6].innerText.indexOf('M') > -1) {
+                    tr[i].classList.remove('hide_row')
+                } else {
+                    tr[i].classList.add('hide_row')
+                }
+            }
+        })
+
+
+        // delete the row
+        function deleteRow(currentRow) {
+            var row = currentRow.parentNode.parentNode;
+            var tbody = row.parentNode;
+            tbody.removeChild(row);
+        }
+        // sort based on age
+        $(document).ready(function () {
+            var ascending = true;
+
+            $("#sortButton").click(function () {
+                var table = $("#table_filter");
+                var rows = $("tbody > tr", table).get();
+
+                rows.sort(function (a, b) {
+                    var ageA = parseInt($("td:eq(2)", a).text());
+                    var ageB = parseInt($("td:eq(2)", b).text());
+
+                    if (ascending) {
+                        $(".arrow").removeClass("fa-chevron-down");
+                        $(".arrow").addClass("fa-chevron-up");
+                        return ageA - ageB;
+                    } else {
+                        $(".arrow").removeClass("fa-chevron-up");
+                        $(".arrow").addClass("fa-chevron-down");
+                        return ageB - ageA;
+                    }
+                });
+
+                $.each(rows, function (index, row) {
+                    $("tbody", table).append(row);
+                });
+
+                // Toggle sorting state
+                ascending = !ascending;
+            });
+            // $(".navbar-toggler-icon").on("click", function () {
+
+            //     alert("hello");
+            // });
+
+            
+        });
+        $(document).ready(function () {
+        var currentMargin = $("#myNavBar2").css("margin-left");
+        $(".navbar-toggler").click(function (event) {
+            $("#myNavBar2").css("margin-left", "0px");
+            // $("#user-form").hide();
+            // $("#search-bar").hide();
+            //   alert("Clicked toogle");
+        });
+
+        // $(window).resize(function () {
+            if ($(window).width() < 991) {
+                $(window).click(function (event) {
+                    if (!$(event.target).closest(".navbar-toggler").length && !$(event.target).closest(".dropdown-toggle").length) {
+                        $("#myNavBar2").css("margin-left", "-300px");
+                        // alert("Clicked anywhere in the window except the Toggle button");
+                    }
+                });
+
+            }
+            else if($(window).width() == 992){
+                $("#myNavBar2").css("margin-left", "0px");
+            }
+            // else if($(window).width() == 991){
+            //     $("#myNavBar2").css("visiblity", "hide");
+            // }
+        // });
+
+
+
+
+    });
+
+
+    </script>
+</body>
+
+</html>

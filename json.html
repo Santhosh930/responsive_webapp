@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <style>
+        #myNavBar ul li a {
+            margin-left: 40px;
+            font-size: 17px;
+            font-weight: 600;
+            color: black;
+        }
+
+        #myNavBar ul li a :hover {
+            color: aqua;
+        }
+
+        .dropdown-menu {
+            width: 250px;
+            padding: 10px;
+        }
+
+        .form-check {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 991.5px) {
+            #side_menu {
+                position: absolute;
+                width: 300px;
+                min-height: 100vh;
+                margin-left: -600px;
+                transition: .5s;
+            }
+
+            .container {
+                width: 100%;
+            }
+            
+        }
+    </style>
+    <header>
+        <nav class=" navbar navbar-expand-lg navbar-dark bg-primary p-2">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <!-- <i class="fa-solid fa-user"> -->
+                    <span><i class="fa-solid fa-user" style="font-size: 40px; padding-right: 10px;"></i></span>
+                    <span id="name"></span>
+                </a>
+                <!-- <h4 class="navbar-brand"><i class="fa-solid fa-user"></i><span id="name"></span></h4> -->
+                <button class="navbar-toggler" id="elementToChange" type="button" data-toggle="collapse" data-target="myNavBar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="myNavBar">
+                    <ul class="navbar-nav ml-auto " style="padding-left: 54vw;">
+                        <li class="nav-item"><a href="home1.html" class="nav-link text-white">Home</a></li>
+                        <li class=" nav-item"><a href="datatable.html" class="nav-link text-white">Pg_nation</a></li>
+                        <li class="nav-item"><a href="index.html" class="nav-link text-white">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="col-3 card" id="side_menu" style="min-height: 94vh; background: rgb(64, 64, 64);">
+                <div class="align-item-center mt-5 card-body" style="margin-left: 25px;">
+                    <div class="d-grid gap-2 mt-5">
+                        <button id="add-fiele-visible" class="btn btn-primary w-100">Add
+                            User</button>
+                    </div>
+                    <div class="d-grid mt-5">
+                        <button id="search-button" class="btn btn-primary w-100">Search
+                            User</button>
+                    </div>
+                    <div class="d-grid gap-2 mt-5">
+                        <button id="datatable" class="btn btn-primary w-100">Datatable</button>
+                    </div>
+
+                    <!-- drop down list check box -->
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle mt-5 w-100" type="button" id="dropdownButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Show Dropdown
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownButton">
+                            <form id="checkboxForm">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="option1" value="option1">
+                                    <label class="form-check-label" for="option1">Option 1</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="option2" value="option2">
+                                    <label class="form-check-label" for="option2">Option 2</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="option3" value="option3">
+                                    <label class="form-check-label" for="option3">Option 3</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="option4" value="option4">
+                                    <label class="form-check-label" for="option3">Option 4</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="option5" value="option5">
+                                    <label class="form-check-label" for="option3">Option 5</label>
+                                </div>
+                                <!-- Add more checkboxes as needed -->
+                                <!-- <button type="submit" class="btn btn-success btn-sm">Apply</button> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="table-responsive container">
+                    <h1 class="text-center mb-4 mt-3">FETCH DATA USING JSON</h1>
+                    <div class="col-md-4 mb-5" id="search-bar" style="display: none;">
+                        <nav class="navbar navbar-light" id="search-bar">
+                            <div class="container">
+                                <div class="d-flex">
+                                    <input class="form-control me-2" type="text" placeholder="Search" id="search-input">
+                                    <!-- <button class="btn btn-outline-success" id="search">Search</button> -->
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <form id="user-form" style="display: none; height: 101px;" class="navbar navbar-light bg-light">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <!-- <div class="form-group">
+                                        <label for="userId">ID:</label>
+                                        <input type="number" class="form-control" id="userId" required>
+                                        <p class="text-danger id" style="visibility: hidden;">Invalid id</p>
+                                    </div> -->
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="userName">Name:</label>
+                                    <input type="text" class="form-control" id="userName">
+                                    <small class="text-danger" id="nameError"></small>
+                                    <!-- <p class="text-danger name" style="visibility: hidden;">Invalid Name</p> -->
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="userEmail">Email:</label>
+                                    <input type="email" class="form-control" id="userEmail" required>
+                                    <small class="text-danger" id="emailError"></small>
+                                    <!-- <p class="text-danger email" style="visibility: hidden;">Invalid Email</p> -->
+                                </div>
+                            </div>
+                            <div class="col-2 mt-4">
+                                <!-- <input type="submit" id="add-user" class="btn btn-primary" value=""> -->
+                                <button type="button" id="add-user" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <table id="myTable" class="table table-striped table-bordered text-center table-hover">
+                        <thead>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Data will be displayed here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer bg-primary">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center text-white">
+                    <p>&copy; 2023 Your Company. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="json.js"></script>
+</body>
+
+</html>

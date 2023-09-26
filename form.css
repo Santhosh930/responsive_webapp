@@ -1,0 +1,29 @@
+.card-header{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700px;
+}
+.form-group{
+    margin-bottom: 18px;
+}
+label{
+    font-size: 18px;
+}
+.form-check-lable{
+    /* margin-left: 20px; */
+    margin-right: 15px;
+}
+/* .submit{
+    margin-right: 300px;
+    margin-left: 55px;
+} */
+.input-group-text{
+    height: 5.9vh;
+}
+.submit{
+    margin-left: -4vw;
+}
+/* input{
+    border: 2px solid red;
+    border-color: red;
+} */
